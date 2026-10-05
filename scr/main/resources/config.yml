@@ -1,0 +1,63 @@
+# ==========================================================
+#  DailyRewardsGUI - Configuracion
+#  Colores: usa & (ej. &6 = dorado). Placeholders disponibles:
+#    %player%  -> nombre del jugador
+#    %time%    -> tiempo restante (HH:MM:SS)
+# ==========================================================
+
+settings:
+  # Cooldown en segundos (86400 = 24 horas exactas)
+  cooldown-seconds: 86400
+
+gui:
+  title: "&6&lRecompensa Diaria"
+  # Slot del item central (en un cofre de 27 slots el centro es 13)
+  claim-slot: 13
+
+  # Relleno decorativo del resto de slots
+  filler:
+    enabled: true
+    material: GRAY_STAINED_GLASS_PANE
+    name: " "
+
+  items:
+    # item cuando la recompensa esta disponible
+    available:
+      material: EMERALD
+      glow: true            # Encantamiento visual (sin mostrar el encantamiento)
+      name: "&a&liReclamar recompensa!"
+      lore:
+        - "&7Tu recompensa diaria esta lista."
+        - ""
+        - "&eHaz clic para reclamarla."
+
+    # item cuando aun esta en cooldown
+    unavailable:
+      material: RED_STAINED_GLASS
+      glow: false
+      name: "&c&lRecompensa no disponible"
+      lore:
+        - "&7Ya reclamaste tu recompensa de hoy."
+        - ""
+        - "&7Tiempo restante: &c%time%"
+
+rewards:
+  # Comandos ejecutados desde la CONSOLA al reclamar.
+  # Nota sobre Vault: Vault es solo una API y no tiene comandos propios.
+  # Usa el comando de tu plugin de economia (ej. EssentialsX: "eco give %player% 500").
+  commands:
+    - "eco give %player% 500"
+    - "give %player% diamond 3"
+    - "xp add %player% 100 points"
+
+messages:
+  prefix: "&8[&6Recompensas&8] "
+  claimed: "&aiHas reclamado tu recompensa diaria!"
+  on-cooldown: "&cAun no puedes reclamar. Vuelve en &e%time%&c."
+  no-permission: "&cNo tienes permiso para hacer esto."
+  only-players: "&cSolo los jugadores pueden usar este comando."
+  reloaded: "&aConfiguracion recargada correctamente."
+
+sounds:
+  claim: ENTITY_PLAYER_LEVELUP
+  deny: ENTITY_VILLAGER_NO

@@ -1,0 +1,22 @@
+name: DailyRewardsGUI
+version: 1.0.0
+main: com.example.dailyrewardsgui.DailyRewardsGUI
+api-version: '1.20'
+author: TuNombre
+description: Sistema de recompensas diarias con interfaz gráfica.
+softdepend: [Vault]
+
+commands:
+  daily:
+    description: Abre el menú de recompensa diaria.
+    aliases: [recompensa]
+    usage: /<command> [reload]
+    permission: dailyrewards.use
+
+permissions:
+  dailyrewards.use:
+    description: Permite abrir el menú y reclamar la recompensa.
+    default: true
+  dailyrewards.reload:
+    description: Permite recargar la configuración.
+    default: op
